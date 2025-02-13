@@ -1,79 +1,61 @@
-import NavBar from '@/components/NavBar'
-import Image from 'next/image'
+import Education from "@/components/Education";
+import Stack from "@/components/ui/Stack";
+import About from "@/components/ui/Stack";
 
 export default function Home() {
+  const about = {
+    idLink: "about",
+    title: "دریاره من",
+    paragraph:
+      "نیما سهرابی – توسعه‌دهنده فرانت‌اندمن نیما سهرابی، یک توسعه‌دهنده فرانت‌اند با تخصص در React، TypeScript، Next.js، Tailwind CSS و سایر تکنولوژی‌های مرتبط هستم. از سال 1401 فعالیت خود را در حوزه برنامه‌نویسی آغاز کرده‌ام و تاکنون پروژه‌های متعددی را در زمینه طراحی و توسعه وب پیاده‌سازی کرده‌ام.مهارت من در ایجاد رابط‌های کاربری مدرن، ریسپانسیو و بهینه‌شده از نظر سئو باعث شده است که بتوانم تجربه کاربری بهتری برای کاربران فراهم کنم. همچنین، تجربه کار با APIهایی مانند TMDB و RAWG و پیاده‌سازی قابلیت‌هایی مانند احراز هویت، دریافت داده‌های پویا و بهینه‌سازی عملکرد وب‌سایت را دارم.در حال حاضر، علاوه بر توسعه وب، در حال گسترش دانش خود در زمینه وردپرس، React Native و تست‌نویسی با Jest هستم. هدف من، ارائه راهکارهای نوآورانه و ارتقای سطح فنی در پروژه‌هایی است که روی آن‌ها کار می‌کنم.",
+  };
+  const skills = [
+    {
+      category: "توسعه فرانت‌اند",
+      skills: ["HTML", "CSS", "JavaScript", "React", "Next.js"],
+    },
+    {
+      category: "استایل‌دهی",
+      skills: ["Tailwind", "Chakra UI", "Bootstrap", "Sass", "..."],
+    },
+    { category: "ابزارها", skills: ["Git", "GitHub", "npm", "Yarn", "Vercel"] },
+    { category: "بهینه‌سازی", skills: ["SEO", "Jest", "Lighthouse", "Regex"] },
+    {
+      category: "مدیریت داده و API",
+      skills: ["TMDB API", "RAWG API", "RESTful APIs"],
+    },
+    {
+      category: "وردپرس",
+      skills: ["توسعه قالب اختصاصی", "پشتیبانی از Elementor"],
+    },
+  ];
   return (
-    <main>
-      <NavBar />
-      {/* <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+    <main className="mx-2">
+      <Stack
+        idLink={about.idLink}
+        title={about.title}
+        paragraph={about.paragraph}
+      />
+      <Stack idLink="skills" title="مهارت ها">
+        {skills.map((item, index) => (
+          <Stack title={item.category}>
+            <ul className="flex flex-col justify-between w-[200px]">
+              {item.skills.map((skill) => (
+                <li key={index} className="flex  my-1">
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </Stack>
+        ))}
+      </Stack>
+      <Stack idLink="education" title="تحصیلات">
+        <Education />
+      </Stack>
+      {/* <Stack >
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+      </Stack> */}
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div> */}
     </main>
-  )
+  );
 }
