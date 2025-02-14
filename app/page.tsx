@@ -1,6 +1,10 @@
 import Education from "@/components/Education";
+import Job from "@/components/Job";
+import ScrollButton from "@/components/ScrollButton";
 import Stack from "@/components/ui/Stack";
-import About from "@/components/ui/Stack";
+import Image from "next/image";
+import Link from "next/link";
+import { IoIosArrowUp } from "react-icons/io";
 
 export default function Home() {
   const about = {
@@ -30,7 +34,7 @@ export default function Home() {
     },
   ];
   return (
-    <main className="mx-2">
+    <main className="mx-2 ">
       <Stack
         idLink={about.idLink}
         title={about.title}
@@ -38,7 +42,7 @@ export default function Home() {
       />
       <Stack idLink="skills" title="مهارت ها">
         {skills.map((item, index) => (
-          <Stack title={item.category}>
+          <Stack title={item.category} key={index}>
             <ul className="flex flex-col justify-between w-[200px]">
               {item.skills.map((skill) => (
                 <li key={index} className="flex  my-1">
@@ -52,10 +56,25 @@ export default function Home() {
       <Stack idLink="education" title="تحصیلات">
         <Education />
       </Stack>
-      {/* <Stack >
-
-      </Stack> */}
-
+      <Stack title="تجربیات شغلی" idLink="Job">
+        <div className="w-full">
+          <Job />
+        </div>
+      </Stack>
+      <Stack idLink="certificates" title="گواهی نامه ها">
+        <div className="text-center mx-auto group">
+          <Stack title="ciw">
+            <Image
+              src={"/ciw.jpg"}
+              alt="ciw"
+              width={300}
+              height={300}
+              className="rounded-xl group-hover:scale-105 duration-300 mt-2 cursor-pointer border border-b border-gray-300"
+            />
+          </Stack>
+        </div>
+      </Stack>
+      <ScrollButton />
     </main>
   );
 }

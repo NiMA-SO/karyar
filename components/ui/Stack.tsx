@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 interface Props {
   paragraph?: string;
-  title: string;
+  title?: string;
   idLink?: string;
   children?: ReactNode;
 }
